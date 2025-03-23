@@ -17,13 +17,11 @@ import { IoIosExpand } from "react-icons/io";
 import { useDroppable, useDndMonitor, DragEndEvent, useDraggable, useSensors, MouseSensor } from "@dnd-kit/core";
 import { cn } from "@/lib/utils";
 import { IForm } from "../../../models/Form";
-
 import { Separator } from "@/components/ui/separator";
 import { DndContext } from "@dnd-kit/core";
 import SidebarBtnElement from "../(components)/SidebarBtnElement";
 import { FormElements, ElementsType, FormElementInstance } from "../(components)/FormElement";
 import DragOverlayWraapper from "../(components)/DragOverlayWraapper";
-
 import useDesigner from "@/src/hooks/useDesigner";
 import { nanoid } from "nanoid";
 
@@ -42,7 +40,7 @@ const DesignerComponent = () => {
 
   useDndMonitor({
     onDragEnd: (e: DragEndEvent) => {
-      const {active, over} = e;
+      const { active, over } = e;
       if(!active || !over) return;
       
       const isDesignerBtnElement = active.data?.current?.isDesignerBtnElement;
@@ -273,18 +271,19 @@ function DesignerElementWrapper({ element }: { element: FormElementInstance }) {
         <>
           <div className="absolute right-2 top-2 z-10">
             <Button 
-              variant="ghost" 
-              className="w-8 h-8 p-0 rounded-full bg-[#181828] hover:bg-[#6b46c1] text-white"
+              variant="outline" 
+              className="w-8 h-8 p-0 rounded-full  text-white"
               onClick={() => {
                 removeElement(element.id);
               }}
+
             >
               <BiSolidTrash className="w-4 h-4" />
             </Button>
           </div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse z-10"> 
+          {/* <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse z-10"> 
             <p className="text-sm text-white bg-[#181828] px-2 py-1 rounded-md">Click for properties</p>
-          </div>
+          </div> */}
         </>
       )}
 

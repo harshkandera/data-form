@@ -28,7 +28,7 @@ export const FormElements: FormElementsType = {
 export type FormElementInstance = {
   id: string;
   type: ElementsType;
-  extraAttributes?: Record<string, any>;
+  extraAttributes?: Record<string, string | boolean | number>;
 };
 
 
