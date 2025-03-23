@@ -17,7 +17,6 @@ const BaseFieldSchema = new mongoose.Schema({
     blockProperties: {
         blockName: { type: String },
     },
-
     
     options: {
         helpText: { type: String },

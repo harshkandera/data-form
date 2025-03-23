@@ -1,17 +1,24 @@
 import { create } from "zustand";
 import { nanoid } from "nanoid"; // Import nanoid for unique ID
+import { IElement } from "../app/create/(components)/Fields/Text";
 
-const useElementStore = create((set) => ({
+interface ElementStore {
+  Elements: IElement[];
+  addItem: (item: Omit<IElement, 'id'>) => void;
+  removeItem: (id: string) => void;
+}
+
+const useElementStore = create<ElementStore>((set) => ({
   Elements: [], // Corrected state key
 
-  addItem: (item:any) =>
-    set((state:any) => ({
+  addItem: (item) =>
+    set((state) => ({
       Elements: [...state.Elements, { ...item, id: nanoid() }], // Ensure unique ID
     })),
 
-  removeItem: (id:string) =>
-    set((state:any) => ({
-      Elements: state.Elements.filter((item:any) => item.id !== id), // Corrected state key
+  removeItem: (id) =>
+    set((state) => ({
+      Elements: state.Elements.filter((item) => item.id !== id), // Corrected state key
     })),
 }));
 

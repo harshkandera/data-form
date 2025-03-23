@@ -5,7 +5,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import { Toaster } from "@/components/ui/sonner"
 import { SessionProvider } from "next-auth/react";
-
+import DesignerContextProvider from "@/src/app/context/DesignerContextType";
 const AeonikPro = localFont({
   src: [
     { path: "../../public/font/AeonikProTRIAL-Light.otf", weight: "400" },
@@ -24,12 +24,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${AeonikPro.variable}`}>
       <body>
+        <DesignerContextProvider>
         <QueryClientProvider client={queryClient}>
         <SessionProvider>
         {children}
         </SessionProvider>
         </QueryClientProvider>
         <Toaster richColors closeButton position="top-right" />
+
+        </DesignerContextProvider>
       </body>
     </html>
   );

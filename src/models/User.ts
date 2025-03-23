@@ -19,7 +19,7 @@ export const TagModel: Model<IFormTags> = mongoose.models["Tags"] || mongoose.mo
 // 2️⃣ User Interface & Model
 export interface IUser extends Document {
   name: string;
-  phone: string;
+  phone?: string;
   email?: string;
   password?: string;
   role: "user" | "admin";
@@ -40,7 +40,6 @@ const UserSchema: Schema<IUser> = new Schema(
     },
     phone: {
       type: String,
-      required: true,
       trim: true,
     },
     email: {

@@ -3,6 +3,7 @@ import { sendMail } from "@/lib/nodemailer";
 import { redis } from "@/lib/utils";
 import { generateOtpEmail } from "@/components/email-templates/otp";
 import User from "@/src/models/User";
+import {connectToDatabase} from "@/lib/db";
 
 interface OtpRequestBody {
   name: string;
@@ -19,8 +20,11 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "All fields are required" }, { status: 400 });
     }
 
+
+    await connectToDatabase();
     // Check if user already exists
     const existingUser = await User.findOne({ email });
+
     if (existingUser) {
       return NextResponse.json({ error: "User already exists" }, { status: 400 });
     }

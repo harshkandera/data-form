@@ -22,6 +22,8 @@ export async function POST(req: Request) {
       );
     }
 
+    await connectToDatabase();
+
     // ✅ Verify OTP from Redis
     const storedOtp = await redis.get(`otp:${email}`);
 
