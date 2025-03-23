@@ -28,7 +28,7 @@ Ensure you have the following installed:
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/form-builder.git
+   git clone https://github.com/harshkandera/data-form.git
    cd form-builder
    ```
 2. Install dependencies:
